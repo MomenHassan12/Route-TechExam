@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "json": "^11.0.0",
     "json-serve": "^0.1.0",
-    "json-server": "^1.0.0-beta.1"
-  }
+    "json-server": "^1.0.0-beta.1",
+    "server": "^1.0.39"
+  },
+  "devDependencies": {}
 }
