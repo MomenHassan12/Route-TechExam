@@ -1,4 +1,4 @@
-const apiUrl = 'https://route-techexam.onrender.com';
+const apiUrl = 'https://route-techexam.onrender.com'; //http://localhost:8080 
 const customerTable = document.getElementById('customer-table').getElementsByTagName('tbody')[0];
 const filterNameInput = document.getElementById('filter-name');
 const filterAmountInput = document.getElementById('filter-amount');
@@ -6,11 +6,12 @@ const ctx = document.getElementById('transaction-chart').getContext('2d');
 let customers = [];
 let transactions = [];
 let chart;
-
+import axios from "axios"
+import { axios } from 'ax';
 document.addEventListener('DOMContentLoaded', () => {
     initialize();
 });
-
+const customer =()=>axios.get
 async function fetchData() {
     try {
         const customerResponse = await fetch(`${apiUrl}/customers`);
