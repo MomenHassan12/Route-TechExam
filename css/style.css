@@ -6,6 +6,10 @@
         .table-hover tbody tr:hover th {
             background-color: #f2f2f2;
         }
-thead{
-    background-color: gray !important;
+th,td{
+    padding: .5rem;
+}
+th{
+    background-color: rgba(0, 0, 0, 0.877);
+    color: #f2f2f2;
 }
