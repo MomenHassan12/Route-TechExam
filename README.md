@@ -20,6 +20,7 @@ This project is a web application that displays customer transaction data. The a
 - GitHub Pages (https://pages.github.com/) for frontend hosting
 
 # Note (Important)
+
 The project run in live demo page with the render if you want to see it with local server to host the JSON data 
 - Assume apiUrl in script.js  to http://localhost:8080
 - write in terminal  node index.js OR npm start
