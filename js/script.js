@@ -1,4 +1,4 @@
-const apiUrl = 'https://api.jsonbin.io/v3/b/669877d3acd3cb34a867a788/latest'; // Replace with your JSONBin URL
+const apiUrl = 'http://localhost:8080'; // Replace with your JSONBin URL
 const customerTable = document.getElementById('customer-table').getElementsByTagName('tbody')[0];
 const filterNameInput = document.getElementById('filter-name');
 const filterAmountInput = document.getElementById('filter-amount');
@@ -13,14 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchData() {
     try {
-        const response = await fetch(apiUrl, {
-            headers: {
-                'X-Master-Key': '$2a$10$6FqL0ZPqOAKk1MtVXbn1rOKOeF9BVjERsDDkcjDGT0b9yQju3epei' // Replace with your JSONBin secret key if required
-            }
-        });
-        const data = await response.json();
-        customers = data.record.customers;
-        transactions = data.record.transactions;
+        const customerResponse = await fetch(`${apiUrl}/customers`);
+        const transactionResponse = await fetch(`${apiUrl}/transactions`);
+        customers = await customerResponse.json();
+        transactions = await transactionResponse.json();
+
+        if (!Array.isArray(customers) || !Array.isArray(transactions)) {
+            throw new Error('Fetched data is not an array');
+        }
+
+        console.log('Customers:', customers);
+        console.log('Transactions:', transactions);
 
         displayData(customers, transactions);
         updateChart(transactions);
