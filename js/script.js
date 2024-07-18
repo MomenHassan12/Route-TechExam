@@ -6,12 +6,9 @@ const ctx = document.getElementById('transaction-chart').getContext('2d');
 let customers = [];
 let transactions = [];
 let chart;
-import axios from "axios"
-import { axios } from 'ax';
 document.addEventListener('DOMContentLoaded', () => {
     initialize();
 });
-const customer =()=>axios.get
 async function fetchData() {
     try {
         const customerResponse = await fetch(`${apiUrl}/customers`);
