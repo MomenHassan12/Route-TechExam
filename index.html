@@ -5,28 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Transactions</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <h1>Customer Transactions</h1>
-    <div id="filters">
-        <input type="text" id="filter-name" placeholder="Filter by customer name">
-        <input type="text" id="filter-amount" placeholder="Filter by transaction amount">
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Customer Transactions</h1>
+        <div id="filters" class="form-inline justify-content-center">
+            <input type="text" id="filter-name" class="form-control mr-2 w-25 mb-3"
+                placeholder="Filter by customer name">
+            <input type="text" id="filter-amount" class="form-control ml-2 mb-3 w-25"
+                placeholder="Filter by transaction amount">
+        </div>
+        <div class="row">
+            <table id="customer-table" class="table table-bordered table-hover col-md-6">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <canvas id="transaction-chart" width="400" height="200" class="col-md-6"></canvas>
+        </div>
     </div>
-    <table id="customer-table">
-        <thead>
-            <tr>
-                <th>Customer Name</th>
-                <th>Date</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be inserted here -->
-        </tbody>
-    </table>
-    <canvas id="transaction-chart" width="400" height="200"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/script.js"></script>
 </body>
