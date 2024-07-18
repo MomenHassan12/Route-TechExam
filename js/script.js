@@ -1,20 +1,23 @@
+const apiUrl = 'http://localhost:8080';
+const customerTable = document.getElementById('customer-table').getElementsByTagName('tbody')[0];
+const filterNameInput = document.getElementById('filter-name');
+const filterAmountInput = document.getElementById('filter-amount');
+const ctx = document.getElementById('transaction-chart').getContext('2d');
+let customers = [];
+let transactions = [];
+let chart;
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'http://localhost:8080';
+    initialize();
+});
 
-    const customerTable = document.getElementById('customer-table').getElementsByTagName('tbody')[0];
-    const filterInput = document.getElementById('filter');
-    const ctx = document.getElementById('transaction-chart').getContext('2d');
-    let customers = [];
-    let transactions = [];
-    let chart;
-
-    const fetchData = async () => {
+    async function fetchData() {
         try {
             const customerResponse = await fetch(`${apiUrl}/customers`);
             const transactionResponse = await fetch(`${apiUrl}/transactions`);
             customers = await customerResponse.json();
             transactions = await transactionResponse.json();
 
+            // Verify data is an array
             if (!Array.isArray(customers) || !Array.isArray(transactions)) {
                 throw new Error('Fetched data is not an array');
             }
@@ -27,9 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-    };
+    }
 
-    const displayData = (customers, transactions) => {
+    function displayData(customers, transactions) {
         customerTable.innerHTML = '';
         transactions.forEach(transaction => {
             const customer = customers.find(c => c.id === transaction.customer_id);
@@ -42,18 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateChart(transactions.filter(t => t.customer_id === transaction.customer_id));
             });
         });
-    };
+    }
 
-    const filterData = () => {
-        const filterValue = filterInput.value.toLowerCase();
+    function filterData() {
+        const filterNameValue = filterNameInput.value.toLowerCase();
+        const filterAmountValue = filterAmountInput.value.toLowerCase();
         const filteredTransactions = transactions.filter(transaction => {
             const customer = customers.find(c => c.id === transaction.customer_id);
-            return customer.name.toLowerCase().includes(filterValue) || transaction.amount.toString().includes(filterValue);
+            const matchesName = customer.name.toLowerCase().includes(filterNameValue);
+            const matchesAmount = transaction.amount.toString().includes(filterAmountValue);
+            return matchesName && matchesAmount;
         });
         displayData(customers, filteredTransactions);
-    };
+    }
 
-    const updateChart = (transactions) => {
+    function updateChart(transactions) {
         const groupedTransactions = transactions.reduce((acc, transaction) => {
             acc[transaction.date] = (acc[transaction.date] || 0) + transaction.amount;
             return acc;
@@ -80,9 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }]
             }
         });
-    };
+    }
 
-    filterInput.addEventListener('input', filterData);
+    function initialize() {
+        filterNameInput.addEventListener('input', filterData);
+        filterAmountInput.addEventListener('input', filterData);
+        fetchData();
+    }
 
-    fetchData();
-});

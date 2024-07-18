@@ -5,31 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Transactions</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        #filter {
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <h1>Customer Transactions</h1>
-    <input type="text" id="filter" placeholder="Filter by customer name or amount">
+    <div id="filters">
+        <input type="text" id="filter-name" placeholder="Filter by customer name">
+        <input type="text" id="filter-amount" placeholder="Filter by transaction amount">
+    </div>
     <table id="customer-table">
         <thead>
             <tr>
@@ -44,7 +28,7 @@
     </table>
     <canvas id="transaction-chart" width="400" height="200"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
