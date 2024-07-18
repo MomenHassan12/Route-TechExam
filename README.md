@@ -6,7 +6,7 @@ This project is a web application that displays customer transaction data. The a
 
 - Displays a table with customer names, transaction dates, and amounts.
 - Allows filtering the table by customer name and transaction amount.
-- Displays a graph of the total transaction amount per day for the selected customer.
+- Displays a graph of the total transaction amount per day for the selected customer (when you clicked in his name).
 
 ## Technologies Used
 
