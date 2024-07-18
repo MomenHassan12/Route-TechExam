@@ -1,4 +1,3 @@
-# Route-TechExam
 # Customer Transactions Application
 
 This project is a web application that displays customer transaction data. The application fetches data from a backend API and presents it in a user-friendly format. It includes features like filtering the table by customer name or transaction amount and displaying a graph of the total transaction amount per day for the selected customer.
@@ -24,5 +23,5 @@ This project is a web application that displays customer transaction data. The a
 
 # Note (Important)
 The project run in live demo page with the render if you want to see it with local server to host the JSON data 
-1- Assume apiUrl in script.js  to http://localhost:8080
-2- write in terminal  node index.js OR npm start
+- Assume apiUrl in script.js  to http://localhost:8080
+- write in terminal  node index.js OR npm start
