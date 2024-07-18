@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8080'; // Replace with your JSONBin URL
+const apiUrl = 'https://route-techexam.onrender.com';
 const customerTable = document.getElementById('customer-table').getElementsByTagName('tbody')[0];
 const filterNameInput = document.getElementById('filter-name');
 const filterAmountInput = document.getElementById('filter-amount');
